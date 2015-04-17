@@ -9,12 +9,17 @@ class MessageController extends Controller {
      */
     public function save(Request $message)
     {
-        $data = $message->all();
+        $user = $message->get('user_name');
+        $channel = $message->get('channel_name');
+        $time = $message->get('timestamp');
+        $text = $message->get('text');
 
-        if (!\Storage::exists('file.txt')) {
-            \Storage::put('file.txt', json_encode($data));
+        $archiveMessage = $user.' | '.$text.' | '.$time;
+
+        if (!\Storage::exists($channel.'.txt')) {
+            \Storage::put($channel.'.txt', $archiveMessage);
         } else {
-            \Storage::prepend('file.txt', json_encode($data));
+            \Storage::prepend($channel.'.txt', $archiveMessage);
         }
     }
 
