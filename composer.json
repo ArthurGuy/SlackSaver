@@ -1,7 +1,6 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "ArthurGuy/SlackSaver",
+    "description": "Basic Slack message archiving",
     "license": "MIT",
     "type": "project",
     "require": {
