@@ -52,18 +52,14 @@ $app->singleton(
 | route or middleware that'll be assigned to some specific routes.
 |
 */
+/*
+$app->middleware([
 
-// $app->middleware([
-//     // 'Illuminate\Cookie\Middleware\EncryptCookies',
-//     // 'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-//     // 'Illuminate\Session\Middleware\StartSession',
-//     // 'Illuminate\View\Middleware\ShareErrorsFromSession',
-//     // 'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
-// ]);
-
-// $app->routeMiddleware([
-
-// ]);
+]);
+*/
+$app->routeMiddleware([
+    'slack_key' => 'App\Http\Middleware\SlackAuthMiddleware',
+]);
 
 /*
 |--------------------------------------------------------------------------
