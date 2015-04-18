@@ -29,7 +29,7 @@ class MessageController extends Controller
 
         $messageToSave = json_encode($archiveMessage);
 
-        $fileName = $channel . '.txt';
+        $fileName = $channel . '/' . $date->year . '-' . $date->month . '-' .$date->day . '.txt';
 
         if (!\Storage::exists($fileName)) {
             \Storage::put($fileName, $messageToSave);
