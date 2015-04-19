@@ -18,8 +18,6 @@ class MessageController extends Controller
 
         $date = $this->extractDateTimeFromRequest($message);
 
-        //$archiveMessage = $user . ' | ' . $text . ' | ' . $date->format('Y-m-d H:i:s');
-
         $archiveMessage = [
             'user'    => $user,
             'message' => $text,
@@ -29,7 +27,7 @@ class MessageController extends Controller
 
         $messageToSave = json_encode($archiveMessage);
 
-        $fileName = $channel . '/' . $date->year . '-' . $date->month . '-' .$date->day . '.txt';
+        $fileName = $this->generateFilename($channel, $date);
 
         if (!\Storage::exists($fileName)) {
             \Storage::put($fileName, $messageToSave);
@@ -49,6 +47,18 @@ class MessageController extends Controller
         $date = Carbon::createFromTimestamp($timestamp);
 
         return $date;
+    }
+
+    /**
+     * @param $channel
+     * @param $date
+     * @return string
+     */
+    private function generateFilename($channel, $date)
+    {
+        $fileName = $channel . '/' . $date->year . '-' . $date->month . '-' . $date->day . '.txt';
+
+        return $fileName;
     }
 
 }
