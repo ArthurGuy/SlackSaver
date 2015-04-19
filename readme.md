@@ -1,6 +1,6 @@
-## Slack Saver
+# Slack Saver
 
-A basic message archiving for Slack
+### Basic message archiving for Slack
 
 Slack is a brilliant service and one we are starting to use a lot at Build Brighton.
 Unfortunately as a not for profit community we simply cannot afford to pay the monthly fee,
